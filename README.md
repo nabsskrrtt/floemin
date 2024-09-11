@@ -21,7 +21,7 @@ Tugas: Tugas Individu 1 PBP 2024
 
 2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 
- ![Bagan Alur] (bagan.jpg)
+![Bagan Alur](bagan.jpg)
  Setelah request masuk, URL nya akan dicocokkan dengan pola yang ada di urls.py. Jika cocok, akan dicek izinnya, apakah boleh diakses atau tidak. Jika boleh, akan dipanggil function yg sesuai di views.py. Jika tampilan tersebut membutuhkan data dari database, views.py akan berinteraksi dengan models.py. Setelah data diproses, views.py akan merender template HTML untuk ditampilkan ke client
 
 3. Jelaskan fungsi git dalam pengembangan perangkat lunak!
