@@ -1,8 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
 <h1>Welcome to floemin!!</h1>
 
 <h5>App Name: </h5>
 <p>{{app_name}}</p> <!-- Ubah sesuai dengan npm kamu -->
+
 <h5>Name: </h5>
 <p>{{name}}</p> <!-- Ubah sesuai dengan nama kamu -->
+
 <h5>Class: </h5>
 <p>{{class}}</p> <!-- Ubah sesuai dengan kelas kamu -->
+
+{% if not bunga_entries %}
+<p>Belum ada data bunga pada floemin app.</p>
+{% else %}
+<table>
+  <tr>
+    <th>Flower Name</th>
+    <th>Price</th>
+    <th>Description</th>
+  </tr>
+
+  {% comment %} Berikut cara memperlihatkan data bunga di bawah baris ini 
+  {% endcomment %} 
+  {% for bunga_entry in bunga_entries %}
+  <tr>
+    <td>{{bunga_entry.name}}</td>
+    <td>{{bunga_entry.price}}</td>
+    <td>{{bunga_entry.description}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+<br />
+
+<a href="{% url 'main:create_bunga_entry' %}">
+  <button>Add New Flower Entry</button>
+</a>
+{% endblock content %}
