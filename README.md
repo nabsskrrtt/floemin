@@ -2,6 +2,7 @@ Nama : Nabila Maharani Putri
 NPM  : 2306275191
 Tugas: Tugas Individu 1 PBP 2024
 
+Tugas 2
 1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)! 
  Saya mengimplementasikan satu persatu checklist dengan mengerjakan kembali apa yang dikerjakan di tutorial 0 dan tutorial 1. Pada pengerjaannya saya sambil memahami untuk apa step step tersebut dilakukan. Selain itu, saya menyesuaikan penamaan project, penamaan app, dan juga atribut yang digunakan. Berikut step by stepnya:
  > Membuat sebuah proyek Django baru: 
@@ -35,3 +36,26 @@ Tugas: Tugas Individu 1 PBP 2024
 5. Mengapa model pada Django disebut sebagai ORM?
 
  Model pada django disebut Object Relational Mapping (ORM) karena memungkinkan kita untuk berinteraksi dengan database menggunakan object python. Pada models.py, didefinisikan struktur data dan relasi antar data yang kemudian diterjemahkan menjadi tabel di database
+
+
+Tugas 3
+1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
+ Kita memerlukan data delivery dalam pengimplementasian sebuah platform karena memungkinkan platform untuk menyingkronkan data dari berbagai sumber sehingga pengguna selalu mendapatkan data terbaru. Selain itu, penggunaan data delivery dapat memastikan platform tidak melambat atau kurang resposif karena kesulitan mengelola dan menyajikan data secara efisien.
+2. Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?
+ JSON lebih baik dan populer karena lebih ringkas dan readable. Sintaks JSON cenderung lebih kecil ukuran datanya karena formatnya lebih sederhana. Selain itu, parsing pada JSON juga lebih mudah. JSON lebih populer karena banyak API web dan web service saat ini menggunakan JSON sebagai format standar.
+3. Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut?
+ Method is_valid() berfungsi untuk memeriksa apakah data yang di-input memenuhi semua aturan validasi yang telah ditentukan di form. Jika semua data valid, method akan mereturn True dan jika sebaliknya akan mereturn False. Selain menangani validasi, method ini juga akan menampilkan pesan untuk user apabila ada data yang tidak sesuai aturan validasi. Kita membutuhkan method ini untuk memastikan hanya data yang lulus tes validasi yang bisa masuk ke database atau program.
+4. Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?
+ Cross-Site Request Forgery (CSRF) adalah serangan yang manfaatkan kredensial user aktif untuk mengirim request tidak sah ke server. Kita membutuhkan csrf_token untuk mencegah CSRF. Jika kita tidak menggunakan csrf_token, penyerang dapat membuat page web palsu yang berisi formulir yang tujuannya untuk mengumpulkan data user secara tidak sah. Hal ini disebabkan penyerang yang memanfaatkan sesi user aktif dengan mengirim request palsu yang membahayakan keamanan platform.
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+ -membuat model Bunga
+ -membuat form BungaEntryForm
+ -membuat view yang menampilkan form, memroses dan menyimpan data yang di-input user ke database menggunakan save()
+ -menambah 4 function views baru yaitu show_json, show_xml, show_json_by_id, dan show_xml_by_id
+ -membuat routing tiap view yang sesuai pada urls.py pada direktori project
+ -memasukkan url tiap view di Postman untuk melihat apakah penampilan data sudah sesuai.
+
+![View JSON](ss json.png)
+![View XML](ss xml.png)
+![View JSON by id](ss json by id.png)
+![View XML by id](ss xml by id.png)
