@@ -55,7 +55,14 @@ Tugas 3
  -membuat routing tiap view yang sesuai pada urls.py pada direktori project
  -memasukkan url tiap view di Postman untuk melihat apakah penampilan data sudah sesuai.
 
-![View JSON](ss_json.png)
-![View XML](ss_xml.png)
-![View JSON by id](ss_json_by_id.png)
-![View XML by id](ss_xml_by_id.png)
+View JSON
+(ss_json.png)
+
+View XML
+(ss_xml.png)
+
+View JSON by id
+(ss_json_by_id.png)
+
+View XML by id
+(ss_xml_by_id.png)
