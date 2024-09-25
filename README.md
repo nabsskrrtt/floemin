@@ -62,3 +62,16 @@ Tugas 3
 ![View JSON by id](ss_json_by_id.png)
 
 ![View XML by id](ss_xml_by_id.png)
+
+Tugas 4
+1. Apa perbedaan antara HttpResponseRedirect() dan redirect()
+ HttpResponseRedirect() adalah class yang mereturn HTTP 302, yaitu "redirect" menuju URL lain. URL perlu secara eksplisit disebutkan sebagai argumen
+ redirect() lebih fleksibel dalam menerima parameter, dapat berypa view name, nama URL, dan juga model instance
+2. Jelaskan cara kerja penghubungan model Product dengan User!
+ Ketika produk dibuat, django akan menyimpan relasi antar objek produk dan User pembuat objek tersebut. User yang login menggunakan relasi ForegnKey yang menunjukkan bahwa setiap produk dimiliki oleh satu pengguna saja.
+3. Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.
+ Authentication adalah proses memverifikasi identitas pengguna yang dimasukkan di form. Authorization adalah proses menentukan hak akses bagi pengguna yang telah terautentikasi. Jadi, Django akan memverifikasi kredensial yang diinput pengguna. Jika valid, pengguna akan diarahkan ke halaman yang sesuai dengan hak aksesnya.
+4. Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?
+ Django menggunakan session dan cookie untuk mengingat pengguna yang telah login. Session merupakan mekanisme server-side yang menyimpan data sementara tentang pengguna. Saat berhasil login, Django akan membuat session baru dan memberikan Session ID yang unik. Session ID ini akan disimpan di server dan juga dikirimkan ke browser pengguna dalam bentuk cookie. Cookie adalah data kecil yang dikirimkan oleh server ke browser pengguna dan disimpan di komputer pengguna. Cookie yang berisi session ID ini akan digunakan oleh browser untuk mengirimkan kembali session ID ke server pada setiap permintaan berikutnya sehingga server dapat mengetahui pengguna yang sama sedang melakukan request dan dapat mengambil data session pengguna tersebut.
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+ Pertama-tama, saya membuat function registrasi, login, dan logout. Berikutnya, saya membuat akun pengguna dan menambahkan data pada web e commerce saya. Setelahnya, saya logout dan baru menambahkan penerapan cookies dan session. Setelah itu, saya menghubungkan antara produk yang dibuat dan user yang membuat produk tersebut agar ketika seorang user login, user tersebut hanya bisa melihat produk produk yang berhasil dibuatnyha. Terakhir, saya menampilkan info waktu login terakhir.
