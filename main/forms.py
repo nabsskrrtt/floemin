@@ -4,4 +4,4 @@ from main.models import Bunga
 class BungaForm (ModelForm):
     class Meta:
         model = Bunga
-        fields = ["name", "price", "description"]
+        fields = ["name", "price", "description", "stocks", "img_url"]
