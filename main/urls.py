@@ -10,6 +10,7 @@ from main.views import login_user
 from main.views import logout_user
 from main.views import edit_bunga
 from main.views import delete_bunga
+from main.views import add_flower_entry_ajax
 
 app_name = 'main'
 
@@ -25,4 +26,5 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
     path('edit-bunga/<uuid:id>', edit_bunga, name='edit_bunga'),
     path('delete/<uuid:id>', delete_bunga, name='delete_bunga'),
+    path('create-flower-entry-ajax', add_flower_entry_ajax, name='add_flower_entry_ajax')
 ]
