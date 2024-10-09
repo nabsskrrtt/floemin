@@ -148,4 +148,25 @@ contoh penggunaan grid layout:
     Saya mengatur dua layout untuk mobile dan desktop version pada navbar.html
 
 
+TUGAS 6
+
+1. Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+   Penggunaan JavaScript memungkinkan manipulasi page web secara dinamis tanpa perlu merefresh seluruh halaman sehingga dapat meningkatkan interaktivitas dengan user melalui respons yang cepat. Penggunaan JavaScript memungkinkan validasi form di sisi klien sehingga mengurangi beban server.
+2. Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+   Penggunaan await berfungsi untuk menunggu hasil operasi asynchronus sebelum melanjutkan eksekusi kode. Proses ini memastikan bahwa data telah diterima sebelum diproses lebih lanjut. Jika tidak menggunakan await, kode akan terus berjalan tanpa menunggu respons dari server, yang dapat menyebabkan error atau mereturn hasil yang tidak diinginkan karena data belum tersedia.
+3. Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
+   csrf_exempt memungkinkan view menerima request method POST tanpa csrf token.  Decorator diperlukan karena AJAX request yang dibuat melalui JavaScript tidak secara otomatis menyertakan csrf token seperti form HTML biasa. Penggunaan decorator ini juga memungkinkan pengiriman data melalui AJAX tanpa kendala keamanan csrf, namun harus digunakan dengan hati-hati karena mengurangi perlindungan terhadap serangan csrf.
+4. Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+   Pembersihan di frontend masih dapat dilewati oleh penyerang yang memanipulasi request langsung ke server. Pembersihan di backend dapat memastikan semua data telah dibersihakan sebelum diinput ke database. Selain itu, pembersihan backend dapat memudahkan pengelolaan dan pembaruan aturan validasi di satu tempat. Pembersihan backend juga dapat menangani kasus di mana JavaScript dinonaktifkan di browser user.
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+   1. membuat fungsi AJAX untuk menambahkan bunga entry baru di views.py
+   2. menambahkan routing untuk fungsi AJAX di urls.py
+   3. membuat modal form di main.html untuk input bunga entry yang baru
+   4. mengimplementasikan dungsi JavaScript untuk menampilkan dan menyembunyikan modal
+   5. membuat fungsi addFlowerEntry() untuk mengirim data form melalui AJAX
+   6. mengimplementasikan fungsi refreshBungaEntries() untuk memperbarui tampilan bunga entries secara asynchronus
+   7. menambahkan event listener pada form untuk menjalankan addFlowerEntry() saat disubmit
+   8. mengimplementasikan perlindungan terhadap XSS dengan menambahkan strip_tags di views.py dan forms.py
+   9. menambahkan DOMPurify untuk membersihkan data di sisi klien sebelum ditampilkan
+
 
