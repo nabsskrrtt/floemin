@@ -1,6 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect 
 from django.core import serializers
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from main.forms import BungaForm
 from main.models import Bunga
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -10,17 +10,20 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from django.utils.html import strip_tags
 
 # Create your views here.
 @login_required(login_url='/login')
 def show_main(request):
-    bunga_entries = Bunga.objects.filter(user=request.user)
+    # bunga_entries = Bunga.objects.filter(user=request.user)
 
     context = {
         'app_name' : 'floemin',
         'name': request.user.username,
         'class': 'PBP B',
-        'bunga_entries' : bunga_entries,
+        # 'bunga_entries' : bunga_entries,
         'last_login': request.COOKIES['last_login'],
     }
 
@@ -39,11 +42,11 @@ def create_bunga_entry(request):
     return render(request, "create_bunga_entry.html", context)
 
 def show_xml(request):
-    data = Bunga.objects.all()
+    data = Bunga.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
 
 def show_json(request):
-    data = Bunga.objects.all()
+    data = Bunga.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 def show_xml_by_id(request, id):
@@ -78,6 +81,7 @@ def login_user(request):
         return response
 
    else:
+      messages.error(request, "Invalid username or password. Please try again.")
       form = AuthenticationForm(request)
    context = {'form': form}
    return render(request, 'login.html', context)
@@ -87,3 +91,46 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+def edit_bunga(request, id):
+    # Get bunga entry berdasarkan id
+    bunga = Bunga.objects.get(pk = id)
+
+    # Set bunga entry sebagai instance dari form
+    form = BungaForm(request.POST or None, instance=bunga)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_bunga.html", context)
+
+def delete_bunga(request, id):
+    # Get bunga berdasarkan id
+    bunga = Bunga.objects.get(pk = id)
+    # Hapus bunga
+    bunga.delete()
+    # Kembali ke halaman awal
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+@csrf_exempt
+@require_POST
+def add_flower_entry_ajax(request):
+    bunga = strip_tags(request.POST.get("flower")) # strip HTML tags!
+    price = request.POST.get("price")
+    description = strip_tags(request.POST.get("description")) # strip HTML tags!
+    stocks = request.POST.get("stocks")
+    img_url = request.POST.get("img_url")
+    user = request.user
+
+    new_bunga = Bunga(
+        bunga=bunga, price=price,
+        description=description,
+        stocks=stocks, img_url=img_url,
+        user=user
+    )
+    new_bunga.save()
+
+    return HttpResponse(b"CREATED", status=201)

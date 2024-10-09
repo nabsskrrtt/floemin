@@ -75,3 +75,98 @@ Tugas 4
  Django menggunakan session dan cookie untuk mengingat pengguna yang telah login. Session merupakan mekanisme server-side yang menyimpan data sementara tentang pengguna. Saat berhasil login, Django akan membuat session baru dan memberikan Session ID yang unik. Session ID ini akan disimpan di server dan juga dikirimkan ke browser pengguna dalam bentuk cookie. Cookie adalah data kecil yang dikirimkan oleh server ke browser pengguna dan disimpan di komputer pengguna. Cookie yang berisi session ID ini akan digunakan oleh browser untuk mengirimkan kembali session ID ke server pada setiap permintaan berikutnya sehingga server dapat mengetahui pengguna yang sama sedang melakukan request dan dapat mengambil data session pengguna tersebut.
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
  Pertama-tama, saya membuat function registrasi, login, dan logout. Berikutnya, saya membuat akun pengguna dan menambahkan data pada web e commerce saya. Setelahnya, saya logout dan baru menambahkan penerapan cookies dan session. Setelah itu, saya menghubungkan antara produk yang dibuat dan user yang membuat produk tersebut agar ketika seorang user login, user tersebut hanya bisa melihat produk produk yang berhasil dibuatnyha. Terakhir, saya menampilkan info waktu login terakhir.
+
+
+Tugas 5
+
+1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+ CSS selector adalah mekanisme dalam memilih dan menargetkan elemen-elemen HTML tertentu dalam dokumen web untuk diberi style menggunakan CSS. 
+ Urutan prioritas CSS selector:
+ 1. Inline style: style yang diterapkan langsung pada elemen menggunakan atribut style
+ contoh: <div style="font-size : large">
+ 2. IDs: selector yang menggunakan ID
+ contoh: #ID
+ 3. Class, Attribute, dan Psuedoclass: selector yang menggunakan class, attribute, dan pseudoclass
+ contoh: myClass, [type="text"], dan :hover
+ 4. Element tag dan pseudo element: selector yang menggunakan elemen HTML dan pseudo element
+ contoh: div, p.
+ Jika beberapa selector dengan tingkat prioritas sama diterapan, urutan kemunculan akhir akan diterapkan dan digunakan (last rule wins)
+2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+ Responsive design adalah pendekatan yang membuat tampilan web atau app secara otomatis menyesuaikan diri dengan ukuran layar perangkat yang digunakan. Responsive design memungkinkan suatu web untuk diakses di segala device dengan tetap menampilkan tampilan yang optimal dan mudah digunakan. Hal ini penting agar aplikasi web kita dapat diakses lebih banyak orang dengan nyaman. Selain itu, satu responsive design dapat mengurangi biaya pengembangan karena tidak perlu membuat versi terpisah untuk setiap perangkat. 
+ Contoh aplikasi yang sudah menerapkan responsive design: Google, Facebook, Tokopedia
+ Contoh aplikasi yang belum menerapkan responsive design:
+ Pacil Web Service (PWS)
+3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+ - Margin: ruang kosong di sekitar elemen yang digunakan untuk mengatur posisi dan jarak antar elemen
+ - Border: garis batas yange mengelilingi elemen yang digunakan untuk memberikan tampilan yang lebih jelas dan membedakan elemen satu dengan lainnya
+ - Padding: ruang kosong di dalam elemen antara border dan konten di dalamnya. padding digunakan untuk memberi jarak antara konten dengan tepi elemen.
+ Contoh penggunaan:
+ /* Margin */
+p {
+  margin: 20px; /* Atur margin semua sisi */
+  margin-top: 10px; /* Atur margin atas */
+  margin-right: 30px; /* Atur margin kanan */
+  margin-bottom: 20px; /* Atur margin bawah */
+  margin-left: 10px; /* Atur margin kiri */
+}
+
+/* Border */
+div {
+  border: 2px solid black; /* Atur border dengan ketebalan 2px, garis solid, dan warna hitam */
+  border-top: 1px dashed blue; /* Atur border atas dengan garis putus-putus berwarna biru */
+}
+
+/* Padding */
+button {
+  padding: 10px 20px; /* Atur padding atas-bawah 10px, kiri-kanan 20px */
+  padding-left: 30px; /* Atur padding kiri */
+}
+4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+ - Flexbox: Flexible Box digunakan untuk mengatur tata letak elemen dalam satu arah secara horizontal atau vertikal(satu dimensi). flexbox menyediakan properti untuk mengatur penjajaran, penyebaran ruang, dan urutan elemen. 
+ contoh penggunaan flexbox:
+ .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+- Grid Layout: digunakan untuk membuat tata letak dua dimensi dalam baris dan kolom dan elemen child diletakkan di sel-sel grid. Grid layout dapat digunakan untuk mengatur tata letak keseluruhan halaman web, seperti header, footer, sidebar, navbar, dan konten utama. 
+contoh penggunaan grid layout:
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 20px;
+}
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+    1. Implementasi fungsi menghapus dan mengedit product
+    Saya menambahkan function edit_bunga dan delet_bunga pada views.py. dan menambahkan file edit_bunga.html untuk mengatur tampilan edit bunga, sedangkan pada delete bunga, saya hanya implementasikan secara langsung logic untk menghapus info bunga tersebut
+    2. Kustomisasi halaman daftar product menjadi lebih menarik dan responsive. Kemudian, perhatikan kondisi berikut:
+    - Jika pada aplikasi belum ada product yang tersimpan, halaman daftar product akan menampilkan gambar dan pesan bahwa belum ada product yang terdaftar.
+    Saya membuat card info untuk menampilkan siapa yang sedang login dan membuat card bunga untuk menampilkan detail product bunga. Saya juga menyantumkan png yang akan ditampilkan apabila belum ada product yang ditambahkan. Saya juga mendesign setiap elemen yang ditampilkan sesuai dengan tema toko bunga saya.
+    3. Untuk setiap card product, buatlah dua buah button untuk mengedit dan menghapus product pada card tersebut!
+    Saya menambahkan dua tombol tersebut di card_flower.html 
+    4. Buatlah navigation bar (navbar) untuk fitur-fitur pada aplikasi yang responsive terhadap perbedaan ukuran device, khususnya mobile dan desktop.
+    Saya mengatur dua layout untuk mobile dan desktop version pada navbar.html
+
+
+TUGAS 6
+
+1. Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+   Penggunaan JavaScript memungkinkan manipulasi page web secara dinamis tanpa perlu merefresh seluruh halaman sehingga dapat meningkatkan interaktivitas dengan user melalui respons yang cepat. Penggunaan JavaScript memungkinkan validasi form di sisi klien sehingga mengurangi beban server.
+2. Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+   Penggunaan await berfungsi untuk menunggu hasil operasi asynchronus sebelum melanjutkan eksekusi kode. Proses ini memastikan bahwa data telah diterima sebelum diproses lebih lanjut. Jika tidak menggunakan await, kode akan terus berjalan tanpa menunggu respons dari server, yang dapat menyebabkan error atau mereturn hasil yang tidak diinginkan karena data belum tersedia.
+3. Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
+   csrf_exempt memungkinkan view menerima request method POST tanpa csrf token.  Decorator diperlukan karena AJAX request yang dibuat melalui JavaScript tidak secara otomatis menyertakan csrf token seperti form HTML biasa. Penggunaan decorator ini juga memungkinkan pengiriman data melalui AJAX tanpa kendala keamanan csrf, namun harus digunakan dengan hati-hati karena mengurangi perlindungan terhadap serangan csrf.
+4. Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+   Pembersihan di frontend masih dapat dilewati oleh penyerang yang memanipulasi request langsung ke server. Pembersihan di backend dapat memastikan semua data telah dibersihakan sebelum diinput ke database. Selain itu, pembersihan backend dapat memudahkan pengelolaan dan pembaruan aturan validasi di satu tempat. Pembersihan backend juga dapat menangani kasus di mana JavaScript dinonaktifkan di browser user.
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+   1. membuat fungsi AJAX untuk menambahkan bunga entry baru di views.py
+   2. menambahkan routing untuk fungsi AJAX di urls.py
+   3. membuat modal form di main.html untuk input bunga entry yang baru
+   4. mengimplementasikan dungsi JavaScript untuk menampilkan dan menyembunyikan modal
+   5. membuat fungsi addFlowerEntry() untuk mengirim data form melalui AJAX
+   6. mengimplementasikan fungsi refreshBungaEntries() untuk memperbarui tampilan bunga entries secara asynchronus
+   7. menambahkan event listener pada form untuk menjalankan addFlowerEntry() saat disubmit
+   8. mengimplementasikan perlindungan terhadap XSS dengan menambahkan strip_tags di views.py dan forms.py
+   9. menambahkan DOMPurify untuk membersihkan data di sisi klien sebelum ditampilkan
+
+
