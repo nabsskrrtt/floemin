@@ -9,3 +9,5 @@ class Bunga (models.Model):
     name = models.CharField(max_length=255) #CharField ada batasan input
     price = models.IntegerField()
     description = models.TextField()
+    stocks = models.IntegerField()
+    img_url = models.URLField()
