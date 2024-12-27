@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-3g1b9$!5=u60x(-l9t^23d&vztt-lexb@(sskh-=+-#z98ks(d
 PRODUCTION = os.getenv("PRODUCTION", False)
 DEBUG = not PRODUCTION
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "nabila-maharani31-floemiin.pbp.cs.ui.ac.id"] #yang boleh run servernya cuman boleh localhost doang
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "nabila-maharani31-floemiin.pbp.cs.ui.ac.id", "10.0.2.2"] #yang boleh run servernya cuman boleh localhost doang
 
 
 # Application definition
@@ -39,10 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main'
+    'authentication',
+    'corsheaders',
+    'main',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -71,6 +74,12 @@ TEMPLATES = [
         },
     },
 ]
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
 
 WSGI_APPLICATION = 'floemin.wsgi.application'
 
