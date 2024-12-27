@@ -1,4 +1,5 @@
-from django.http import HttpResponse, HttpResponseRedirect 
+import json
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse 
 from django.core import serializers
 from django.shortcuts import render, redirect, reverse
 from main.forms import BungaForm
@@ -134,3 +135,25 @@ def add_flower_entry_ajax(request):
     new_bunga.save()
 
     return HttpResponse(b"CREATED", status=201)
+
+@csrf_exempt
+def create_flower_flutter(request):
+    print(request.method)
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+        print(data)
+        new_flower = Bunga.objects.create(
+            user=request.user,
+            name=data["bunga"],
+            description=data["description"],
+            price=int(data["price"]),
+            stocks=int(data["stocks"]),
+            img_url=data["img_url"]
+        )
+
+        new_flower.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)

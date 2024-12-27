@@ -1,5 +1,5 @@
 from django.urls import path
-from main.views import show_main
+from main.views import create_flower_flutter, show_main
 from main.views import create_bunga_entry
 from main.views import show_xml
 from main.views import show_json
@@ -26,5 +26,6 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
     path('edit-bunga/<uuid:id>', edit_bunga, name='edit_bunga'),
     path('delete/<uuid:id>', delete_bunga, name='delete_bunga'),
-    path('create-flower-entry-ajax', add_flower_entry_ajax, name='add_flower_entry_ajax')
+    path('create-flower-entry-ajax', add_flower_entry_ajax, name='add_flower_entry_ajax'),
+    path('create-flutter/', create_flower_flutter, name='create_flower_flutter'),
 ]
